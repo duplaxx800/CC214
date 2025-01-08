@@ -1,8 +1,5 @@
 package GUI;
-public class admin {
-    public static void main(String args[]){
-        System.out.print("Try 2");
-=======
+
 import javax.swing.*;
 
 public class admin extends JFrame {
@@ -26,6 +23,6 @@ public class admin extends JFrame {
 
         // Make the window visible
         adminWindow.setVisible(true);
->>>>>>> upstream/main
+
     }
 }
