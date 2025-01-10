@@ -66,7 +66,17 @@ public class userDasboard extends admin {
         String username = textField.getText();
         String password = new String(passField.getPassword());
 
-        if (UserManager.isValidUser(username, password)) {
+        // Check for admin credentials first
+        if (UserManager.isAdmin(username, password)) {
+            JOptionPane.showMessageDialog(this, "Welcome Admin!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            // Create and show the AdminGUI
+            SwingUtilities.invokeLater(() -> {
+                AdminGUI.main(new String[0]);
+                this.dispose();
+            });
+        }
+        // If not admin, check for regular user credentials
+        else if (UserManager.isValidUser(username, password)) {
             this.currentUsername = username;
             JOptionPane.showMessageDialog(this, "Login successful", "Success", JOptionPane.INFORMATION_MESSAGE);
             borrowBook borrowWindow = new borrowBook(username);
